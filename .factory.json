@@ -1,0 +1,57 @@
+{
+    "v": "4.0",
+    "workspace": {
+      "commands": [],
+      "projects": [
+        {
+          "name": "devnation",
+          "attributes": {
+            "commands": [
+                "{\"commandLine\":\"cd ${current.project.path}\\nmvn spring-boot:run\", \"name\":\"Run\", \"attributes\":{\"goal\":\"Run\", \"previewUrl\":\"${server.devNationDev}\"}, \"type\":\"mvn\"}",
+                "{\"commandLine\":\"cd ${current.project.path}\\nmvn spring-boot:run -Drun.jvmArguments=\\\"-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8001\\\"\", \"name\":\"Debug\", \"attributes\":{\"goal\":\"Debug\", \"previewUrl\":\"${server.devNationDev}\"}, \"type\":\"mvn\"}"
+              ]
+           },
+          "type": "maven",
+          "source": {
+            "location":"git@github.com:gorkem/devnation.git",
+            "type": "git",
+            "parameters": {}
+          },
+          "modules": [],
+          "path": "/devnation",
+          "mixins": [],
+          "problems": []
+        }
+      ],
+      "defaultEnv": "wss",
+      "name": "devnationDemo",
+      "attributes": {},
+      "environments": {
+        "wss": {
+          "machines": {
+            "dev-machine": {
+              "installers": [
+                "org.eclipse.che.terminal",
+                "org.eclipse.che.exec",
+                "org.eclipse.che.ws-agent"
+              ],
+              "servers": {
+                "devNationDev": {
+                    "attributes": {},
+                    "port": "8080",
+                    "protocol": "http"
+                  }
+              },
+              "attributes": {
+                "memoryLimitBytes": "2147483648"
+              }
+            }
+          },
+          "recipe": {
+            "content": "eclipse/ubuntu_jdk8",
+            "type": "dockerimage"
+          }
+        }
+      }
+    }
+  }
